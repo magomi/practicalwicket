@@ -1,5 +1,7 @@
 package de.practicalwicket;
 
+import de.practicalwicket.ui.wicket.pages.HomePage;
+import de.practicalwicket.ui.wicket.WicketApplication;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;

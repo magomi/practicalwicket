@@ -1,14 +1,11 @@
-package de.practicalwicket;
+package de.practicalwicket.ui.wicket;
 
+import de.practicalwicket.ui.wicket.pages.HomePage;
+import de.practicalwicket.ui.wicket.pages.hierarchy.Page1;
+import de.practicalwicket.ui.wicket.pages.hierarchy.Page2;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
-/**
- * Application object for your web application.
- * If you want to run this application without deploying, run the Start class.
- * 
- * @see de.practicalwicket.Start#main(String[])
- */
 public class WicketApplication extends WebApplication
 {
 	/**
@@ -24,10 +21,11 @@ public class WicketApplication extends WebApplication
 	 * @see org.apache.wicket.Application#init()
 	 */
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
 
-		// add your configuration here
+        mountPage("page1", Page1.class);
+        mountPage("page2", Page2.class);
+
 	}
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title wicket:id="title">Practical Wicket</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="img/favicon.ico" type="image/png">
+
+    <link href="css/bootstrap.css" rel="stylesheet" >
+    <link href="css/style.css" rel="stylesheet" >
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a wicket:id="homepage" class="navbar-brand" >Practical Wicket</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav pull-right">
+                <li><a wicket:id="page1" href="#">Page 1</a></li>
+                <li><a wicket:id="page2" href="#">Page 2</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+
+    <wicket:child>
+
+    </wicket:child>
+
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <span class="text-muted">
+            <a href="#">Impressum</a>
+        </span>
+    </div>
+</footer>
+
+<script src="js/bootstrap.js"></script>
+
+</body>
+</html>
