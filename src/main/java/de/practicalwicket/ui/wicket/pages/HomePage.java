@@ -9,7 +9,5 @@ public class HomePage extends BasePage {
 	public HomePage() {
         super("Home Page");
 
-
-
     }
 }

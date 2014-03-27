@@ -3,8 +3,13 @@ package de.practicalwicket.ui.wicket;
 import de.practicalwicket.ui.wicket.pages.HomePage;
 import de.practicalwicket.ui.wicket.pages.hierarchy.Page1;
 import de.practicalwicket.ui.wicket.pages.hierarchy.Page2;
+import de.practicalwicket.ui.wicket.util.DemoDateConverter;
+import org.apache.wicket.ConverterLocator;
+import org.apache.wicket.IConverterLocator;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+
+import java.util.Date;
 
 public class WicketApplication extends WebApplication
 {
@@ -28,4 +33,15 @@ public class WicketApplication extends WebApplication
         mountPage("page2", Page2.class);
 
 	}
+
+
+
+
+
+    @Override
+    protected IConverterLocator newConverterLocator() {
+        ConverterLocator converterLocator = new ConverterLocator();
+        converterLocator.set(Date.class, new DemoDateConverter());
+        return converterLocator;
+    }
 }
