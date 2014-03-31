@@ -18,7 +18,7 @@ public class RegistrationPage extends BasePage {
     private String passwordRepeat;
 
     public RegistrationPage() {
-        super("Login");
+        super("Registration");
     }
 
 
