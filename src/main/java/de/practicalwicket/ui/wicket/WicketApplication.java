@@ -1,6 +1,7 @@
 package de.practicalwicket.ui.wicket;
 
 import de.practicalwicket.ui.wicket.pages.HomePage;
+import de.practicalwicket.ui.wicket.pages.formprocessing.RegistrationPage;
 import de.practicalwicket.ui.wicket.pages.hierarchy.Page1;
 import de.practicalwicket.ui.wicket.pages.hierarchy.Page2;
 import de.practicalwicket.ui.wicket.util.DemoDateConverter;
@@ -31,7 +32,7 @@ public class WicketApplication extends WebApplication
 
         mountPage("page1", Page1.class);
         mountPage("page2", Page2.class);
-
+        mountPage("registration", RegistrationPage.class);
 	}
 
 

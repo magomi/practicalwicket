@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+
+    <wicket:extend>
+
+        <form wicket:id="form" role="form">
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input wicket:id="email" class="form-control" type="text" id="email" placeholder="type email">
+            </div>
+
+            <div class="form-group">
+                <label for="user">User name</label>
+                <input wicket:id="userName" class="form-control" type="text" id="user" placeholder="your username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">password</label>
+                <input wicket:id="password" class="form-control"
+                       type="password" id="password" placeholder="type password">
+                <input wicket:id="passwordRepeat" class="form-control" type="password" placeholder="repeat password">
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input wicket:id="spam" type="checkbox"> Spam me!
+                </label>
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+    </wicket:extend>
+
+</body>
+</html>
