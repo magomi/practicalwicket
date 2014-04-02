@@ -1,18 +1,25 @@
 package de.practicalwicket;
 
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.model.CompoundPropertyModel;
 
 public class HomePage extends WebPage {
-	private static final long serialVersionUID = 1L;
+    private Person goethe = new Person("Goethe", "Mehr Licht!");
 
-	public HomePage(final PageParameters parameters) {
-		super(parameters);
+	public HomePage() {
+        setDefaultModel(new CompoundPropertyModel<Person>(goethe));
+		add(new Label("name"));
+        add(new Label("famousLastWord"));
+    }
 
-		add(new Label("version", getApplication().getFrameworkSettings().getVersion()));
+    private class Person {
+        private String name;
+        private String famousLastWord;
 
-		// TODO Add your page's components here
-
+        private Person(String name, String famousLastWord) {
+            this.name = name;
+            this.famousLastWord = famousLastWord;
+        }
     }
 }
