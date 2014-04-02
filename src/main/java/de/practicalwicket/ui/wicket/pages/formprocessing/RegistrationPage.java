@@ -2,11 +2,14 @@ package de.practicalwicket.ui.wicket.pages.formprocessing;
 
 import de.practicalwicket.model.Registration;
 import de.practicalwicket.ui.wicket.pages.general.BasePage;
+import de.practicalwicket.ui.wicket.util.form.ErrorMarkingBehavior;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.util.visit.IVisit;
+import org.apache.wicket.util.visit.IVisitor;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.ValidationError;
@@ -70,6 +73,15 @@ public class RegistrationPage extends BasePage {
         form.add(new EqualPasswordInputValidator(passwordField, passwordRepeatField));
 
         form.add(new CheckBox("spam"));
+
+
+        form.visitFormComponents(new IVisitor<FormComponent<?>, Object>() {
+            @Override
+            public void component(FormComponent<?> component, IVisit<Object> visit) {
+                component.add(new ErrorMarkingBehavior());
+            }
+        });
+
 
     }
 
