@@ -6,7 +6,7 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.FormComponent;
 
 /**
- * @author Bert.radke <bert.radke@t-systems.com>
+ * @author bert
  */
 public class ErrorMarkingBehavior extends Behavior {
 
