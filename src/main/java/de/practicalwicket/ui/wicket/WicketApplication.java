@@ -3,11 +3,15 @@ package de.practicalwicket.ui.wicket;
 import de.practicalwicket.ui.wicket.pages.HomePage;
 import de.practicalwicket.ui.wicket.pages.hierarchy.Page1;
 import de.practicalwicket.ui.wicket.pages.hierarchy.Page2;
+import de.practicalwicket.ui.wicket.pages.mounting.MountingIndexed;
+import de.practicalwicket.ui.wicket.pages.mounting.MountingQuery;
 import de.practicalwicket.ui.wicket.util.DemoDateConverter;
 import org.apache.wicket.ConverterLocator;
 import org.apache.wicket.IConverterLocator;
+import org.apache.wicket.core.request.mapper.MountedMapper;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.mapper.parameter.UrlPathPageParametersEncoder;
 
 import java.util.Date;
 
@@ -31,6 +35,9 @@ public class WicketApplication extends WebApplication
 
         mountPage("page1", Page1.class);
         mountPage("page2", Page2.class);
+
+        mountPage("mountingDemo/named/${author}/#{foo}", MountingIndexed.class);
+        mount(new MountedMapper("mountingDemo/query", MountingQuery.class, new UrlPathPageParametersEncoder()));
 
 	}
 
