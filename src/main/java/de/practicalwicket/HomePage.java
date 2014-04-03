@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.CompoundPropertyModel;
 
 public class HomePage extends WebPage {
+
     private Person goethe = new Person("Goethe", "Mehr Licht!");
 
 	public HomePage() {
