@@ -1,22 +1,21 @@
 package de.practicalwicket.ui.wicket;
 
-import de.practicalwicket.ui.wicket.pages.HomePage;
-import de.practicalwicket.ui.wicket.pages.formprocessing.RegistrationPage;
-import de.practicalwicket.ui.wicket.pages.hierarchy.Page1;
-import de.practicalwicket.ui.wicket.pages.hierarchy.Page2;
+import de.practicalwicket.ui.wicket.pages.open.LoginPage;
+import de.practicalwicket.ui.wicket.pages.secured.HomePage;
 import de.practicalwicket.ui.wicket.resources.css.ApplicationCssReference;
 import de.practicalwicket.ui.wicket.resources.css.BootstrapCssReference;
 import de.practicalwicket.ui.wicket.resources.js.BootstrapResourceReference;
-import de.practicalwicket.ui.wicket.util.DemoDateConverter;
-import org.apache.wicket.ConverterLocator;
-import org.apache.wicket.IConverterLocator;
+import de.practicalwicket.ui.wicket.util.AuthStrategy;
+import org.apache.wicket.Component;
+import org.apache.wicket.Session;
+import org.apache.wicket.application.IComponentInstantiationListener;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 
-import java.util.Date;
+public class WicketApplication extends WebApplication {
 
-public class WicketApplication extends WebApplication
-{
 	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
@@ -33,10 +32,9 @@ public class WicketApplication extends WebApplication
 	public void init() {
 		super.init();
 
-        mountPage("page1", Page1.class);
-        mountPage("page2", Page2.class);
-        mountPage("registration", RegistrationPage.class);
+        mountPage("login", LoginPage.class);
 
+        setupAuthorization();
 
         getResourceBundles().addCssBundle(WicketApplication.class, "styles.css"
                 , new BootstrapCssReference()
@@ -47,13 +45,26 @@ public class WicketApplication extends WebApplication
 	}
 
 
+    private void setupAuthorization() {
+        AuthStrategy authStrategy = new AuthStrategy();
+        getSecuritySettings().setAuthorizationStrategy(authStrategy);
+        getSecuritySettings().setUnauthorizedComponentInstantiationListener(authStrategy);
 
+        getComponentInstantiationListeners().add(new IComponentInstantiationListener() {
 
+            public void onInstantiation(final Component component) {
+                if (!getSecuritySettings().getAuthorizationStrategy()
+                        .isInstantiationAuthorized(component.getClass())) {
+                    getSecuritySettings()
+                            .getUnauthorizedComponentInstantiationListener()
+                            .onUnauthorizedInstantiation(component);
+                }
+            }
+        });
+    }
 
     @Override
-    protected IConverterLocator newConverterLocator() {
-        ConverterLocator converterLocator = new ConverterLocator();
-        converterLocator.set(Date.class, new DemoDateConverter());
-        return converterLocator;
+    public Session newSession(Request request, Response response) {
+        return new DemoSession(request);
     }
 }
