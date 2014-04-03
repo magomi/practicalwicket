@@ -12,14 +12,12 @@ import org.apache.wicket.protocol.http.WebApplication;
 
 import java.util.Date;
 
-public class WicketApplication extends WebApplication
-{
+public class WicketApplication extends WebApplication {
 	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
 	@Override
-	public Class<? extends WebPage> getHomePage()
-	{
+	public Class<? extends WebPage> getHomePage() {
 		return HomePage.class;
 	}
 
@@ -34,10 +32,6 @@ public class WicketApplication extends WebApplication
         mountPage("page2", Page2.class);
         mountPage("registration", RegistrationPage.class);
 	}
-
-
-
-
 
     @Override
     protected IConverterLocator newConverterLocator() {
