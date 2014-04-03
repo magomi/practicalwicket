@@ -27,6 +27,6 @@ input.error {
 }
 
 
-input.required {
-    border: 2px solid #ffff00;
+requiredHint {
+   color: #444444;
 }
