@@ -2,6 +2,7 @@ package de.practicalwicket;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 /**
  * Application object for your web application.
@@ -9,8 +10,7 @@ import org.apache.wicket.protocol.http.WebApplication;
  * 
  * @see de.practicalwicket.Start#main(String[])
  */
-public class WicketApplication extends WebApplication
-{
+public class WicketApplication extends WebApplication {
 	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
@@ -24,10 +24,9 @@ public class WicketApplication extends WebApplication
 	 * @see org.apache.wicket.Application#init()
 	 */
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
+        getComponentInstantiationListeners().add(new SpringComponentInjector(this));
 
-		// add your configuration here
-	}
+    }
 }
