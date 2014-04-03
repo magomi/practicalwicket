@@ -5,9 +5,20 @@ import org.apache.wicket.markup.html.border.BorderBehavior;
 import org.apache.wicket.markup.html.form.FormComponent;
 
 /**
- * @author Bert.radke <bert.radke@t-systems.com>
+ * @author bert
  */
 public class RequiredBorder extends BorderBehavior {
+
+
+    @Override
+    public void beforeRender(Component component) {
+
+        if (((FormComponent)component).isRequired()) {
+            super.beforeRender(component);
+        }
+
+    }
+
 
     @Override
     public void afterRender(Component component) {
@@ -17,4 +28,5 @@ public class RequiredBorder extends BorderBehavior {
         }
 
     }
+
 }
