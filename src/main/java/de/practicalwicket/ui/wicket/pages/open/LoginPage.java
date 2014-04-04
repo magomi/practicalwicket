@@ -43,6 +43,7 @@ public class LoginPage extends BasePage {
 
                 if ("wicket".equalsIgnoreCase(password)) {
                     DemoSession.get().login(userName);
+                    continueToOriginalDestination();
                     setResponsePage(new HomePage());
                 } else {
                     error("username or password wrong");
